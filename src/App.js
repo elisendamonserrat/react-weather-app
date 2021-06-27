@@ -1,9 +1,16 @@
-import './App.css';
+import { Component } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+import HomePage from './views/HomePage';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <h1>Here goes the NavBar component</h1>
+
+      <Switch>
+        <Route extact path="/" component={HomePage}/>
+      </Switch>
+    </>
   );
 }
 
