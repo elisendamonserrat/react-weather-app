@@ -1,11 +1,8 @@
 # Weather App
-​
 ## Propósito
-​
 La idea es realizar una app del tiempo donde puedas consultar el tiempo en distintas ciudades del mundo
 ​
 ## Requisitos
-​
 - El usuario debe poder consultar el tiempo por ciudades (input)
 ​
 - El usuario debe poder consultar el pronóstico de la ciudad elegida
@@ -13,7 +10,6 @@ La idea es realizar una app del tiempo donde puedas consultar el tiempo en disti
 - El usuario debe ver una aplicación con estilos (permitido usar Tailwind)
 ​
 ## Bonus
-​
 - El usuario puede guardarse una ciudad como favorita
 ​
 - El usuario puede ver las ciudades que tiene guardadas como favoritas
@@ -23,7 +19,6 @@ La idea es realizar una app del tiempo donde puedas consultar el tiempo en disti
 - *Todo lo que se te ocurra, deja volar tu imaginacion ��*
 ​
 ## Proceso
-​
 - Generar app con create-react-app
 ​
 - Usar como API [OpenWeatherMap](https://openweathermap.org/api)
