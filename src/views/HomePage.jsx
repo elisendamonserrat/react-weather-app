@@ -30,7 +30,7 @@ export class HomePage extends Component {
     render() {
         const { status, location, locationWeather } = this.state;
         return (
-            <main>
+            <main className="w-11/12 max-w-screen-sm mx-auto text-center my-8 flex flex-col items-center">
                 This is the home page - Here goes the input componenet
 
                 { status === 'loading' && <p>Loading weather forecast for {location}</p>}
