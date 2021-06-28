@@ -30,7 +30,7 @@ function ForecastCard(props) {
 
 
     return (
-        <div className="border my-16 flex flex-col items-center py-4 rounded-md w-11/12 max-w-sm">
+        <div className="border my-8 flex flex-col items-center py-4 rounded-md w-11/12 max-w-sm">
             <h1 className="text-3xl">{locationWeather.name}</h1>
             <p className="text-base text-gray-400 font-semibold">{currentDate()}</p>
             <p className="text-gray-500 font-semibold text-xl mt-6">{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</p>

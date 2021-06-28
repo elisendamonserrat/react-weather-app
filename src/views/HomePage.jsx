@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ForecastCard from '../components/ForecastCard';
+import SearchBar from '../components/SearchBar';
 
 export class HomePage extends Component {
     constructor(props) {
@@ -32,6 +33,7 @@ export class HomePage extends Component {
         return (
             <main className="w-11/12 max-w-screen-sm mx-auto text-center my-8 flex flex-col items-center">
                 This is the home page - Here goes the input componenet
+                <SearchBar />
 
                 { status === 'loading' && <p>Loading weather forecast for {location}</p>}
                 { status === 'loaded' && < ForecastCard locationWeather={locationWeather}/>}
