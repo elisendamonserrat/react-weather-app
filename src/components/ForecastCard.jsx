@@ -7,7 +7,6 @@ export class ForecastCard extends Component {
         super(props);
         this.state = {
             favourites: [],
-            
         }
     }
     
