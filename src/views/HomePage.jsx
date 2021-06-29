@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ForecastCard from '../components/ForecastCard';
 import SearchBar from '../components/SearchBar';
-import NotFoundPage from '../views/NotFoundPage';
 import  { Redirect } from 'react-router-dom'
 
 export class HomePage extends Component {
@@ -57,7 +56,7 @@ export class HomePage extends Component {
     }
 
     render() {
-        const { status, location, locationWeather, error, errorInfo } = this.state;
+        const { status, location, locationWeather, error } = this.state;
         return (
             <main className="w-11/12 max-w-screen-sm mx-auto text-center my-8 flex flex-col items-center">
                 <SearchBar newLocation={this.newSearch}/>
