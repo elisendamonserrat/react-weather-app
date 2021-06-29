@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ForecastCard from '../components/ForecastCard';
 import SearchBar from '../components/SearchBar';
+import Navbar from '../components/Navbar';
 import  { Redirect } from 'react-router-dom'
 
 export class HomePage extends Component {
@@ -59,13 +60,18 @@ export class HomePage extends Component {
     render() {
         const { status, location, locationWeather, error } = this.state;
         return (
-            <main className="w-11/12 max-w-screen-sm mx-auto text-center my-8 flex flex-col items-center">
+            <>
+            <Navbar />
+            <main className="w-11/12 max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
+                
+                <p className="text-lg my-4 font-normal">Checkout the weather forecast of any city <br></br>and save your favourites ones!</p>
                 <SearchBar newLocation={this.newSearch}/>
 
-                { status === 'loading' && <p>Loading weather forecast for {location}</p>}
+                { status === 'loading' && <p className="text-lg mb-4 font-normal mt-8"><span className="rotate">⏳</span> Loading weather forecast for {location}</p>}
                 { status === 'loaded' && < ForecastCard locationWeather={locationWeather}/>}
                 { error === true && < Redirect to='/404'/>}
             </main>
+            </>
         )
     }
 }
