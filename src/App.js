@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import HomePage from './views/HomePage';
+import NotFoundPage from './views/NotFoundPage';
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <h1>Here goes the NavBar component</h1>
 
       <Switch>
-        <Route extact path="/" component={HomePage}/>
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/404"component={NotFoundPage} />
       </Switch>
     </>
   );

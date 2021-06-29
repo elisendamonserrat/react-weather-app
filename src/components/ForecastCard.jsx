@@ -2,7 +2,6 @@ import React from 'react'
 
 function ForecastCard(props) {
     const { locationWeather } = props;
-    console.log(props)
 
     const mathRoundTemperature = (temperature) => {
         return Math.round(temperature);
