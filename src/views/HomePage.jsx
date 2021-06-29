@@ -12,6 +12,7 @@ export class HomePage extends Component {
             locationWeather: {},
             status: 'loading',
             error: false,
+            favourites: {},
         }
     }
 
