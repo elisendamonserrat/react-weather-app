@@ -35,20 +35,11 @@ export class ForecastCard extends Component {
     }
 
     handleNewFavourite = () => {
-        //const favouritesCopy = [...this.state.favourites];
-
-        //favouritesCopy.push(locationWeather);
-
-        /*
         this.setState({
-            //favourites: favouritesCopy,
             isFavourite: !this.state.isFavourite,
         })
-        */
-
         const { locationWeather } = this.props;
         this.props.addNewFavourite(locationWeather)
-
     }
 
     removeFromFavourites = () => {
@@ -66,7 +57,8 @@ export class ForecastCard extends Component {
 
         return (
             <div className="border my-8 flex flex-col items-center py-4 rounded-md w-11/12 max-w-sm">
-            <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button>
+            { !isFavourite && <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button>} 
+            { isFavourite && <button className="self-end mx-8" onClick={this.removeFromFavourites}>❤️</button>}
             <h1 className="text-3xl">{locationWeather.name}</h1>
             <p className="text-base text-gray-400 font-semibold">{this.currentDate()}</p>
             <p className="text-gray-500 font-semibold text-xl mt-6">{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</p>

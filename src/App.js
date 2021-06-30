@@ -15,9 +15,16 @@ export class App extends Component {
     }
   }
 
-  addToFavourites = (location) => {
+  addToFavourites = (locationObj) => {
     const favouritesLocationsCopy = [...this.state.favouritesLocations];
-    favouritesLocationsCopy.push(location);
+
+    const index = favouritesLocationsCopy.findIndex(location => location.name === locationObj.name)
+
+    if (index === -1) {
+      favouritesLocationsCopy.push(locationObj);
+    } else  {
+      throw alert('This location is already in your favourites list')
+    }
 
     this.setState({
       favouritesLocations: favouritesLocationsCopy,
