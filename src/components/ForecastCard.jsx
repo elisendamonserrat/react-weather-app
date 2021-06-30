@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 
 export class ForecastCard extends Component {
@@ -7,6 +6,7 @@ export class ForecastCard extends Component {
         super(props);
         this.state = {
             favourites: [],
+            isFavourite: false,
         }
     }
     
@@ -34,14 +34,27 @@ export class ForecastCard extends Component {
         return date
     }
 
-    addToFavourites = () => {
-        const favouritesCopy = [...this.state.favourites];
-        const { locationWeather } = this.props;
+    handleNewFavourite = () => {
+        //const favouritesCopy = [...this.state.favourites];
 
-        favouritesCopy.push(locationWeather);
+        //favouritesCopy.push(locationWeather);
 
+        /*
         this.setState({
-            favourites: favouritesCopy,
+            //favourites: favouritesCopy,
+            isFavourite: !this.state.isFavourite,
+        })
+        */
+
+        const { locationWeather } = this.props;
+        this.props.addNewFavourite(locationWeather)
+
+    }
+
+    removeFromFavourites = () => {
+        console.log('remove location from fav', this.props.locationWeather)
+        this.setState({
+            isFavourite: !this.state.isFavourite,
         })
 
     }
@@ -49,11 +62,11 @@ export class ForecastCard extends Component {
 
     render() {
         const { locationWeather } = this.props;
-        console.log(this.state.favourites)
+        const { isFavourite } = this.state;
 
         return (
             <div className="border my-8 flex flex-col items-center py-4 rounded-md w-11/12 max-w-sm">
-            <button className="self-end mx-8" onClick={this.addToFavourites}>🤍</button>
+            <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button>
             <h1 className="text-3xl">{locationWeather.name}</h1>
             <p className="text-base text-gray-400 font-semibold">{this.currentDate()}</p>
             <p className="text-gray-500 font-semibold text-xl mt-6">{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</p>

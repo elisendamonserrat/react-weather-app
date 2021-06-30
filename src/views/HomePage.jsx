@@ -13,7 +13,6 @@ export class HomePage extends Component {
             locationWeather: {},
             status: 'loading',
             error: false,
-            favourites: {},
         }
     }
 
@@ -57,6 +56,10 @@ export class HomePage extends Component {
         })
     }
 
+    addNewFavouriteLocation = (location) => {
+        this.props.handleNewFavouriteLocation(location);
+    }
+
     render() {
         const { status, location, locationWeather, error } = this.state;
         return (
@@ -68,7 +71,7 @@ export class HomePage extends Component {
                 <SearchBar newLocation={this.newSearch}/>
 
                 { status === 'loading' && <p className="text-lg mb-4 font-normal mt-8"><span className="rotate">⏳</span> Loading weather forecast for {location}</p>}
-                { status === 'loaded' && < ForecastCard locationWeather={locationWeather}/>}
+                { status === 'loaded' && < ForecastCard locationWeather={locationWeather} addNewFavourite={this.addNewFavouriteLocation}/>}
                 { error === true && < Redirect to='/404'/>}
             </main>
             </>
