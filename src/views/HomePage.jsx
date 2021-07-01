@@ -60,6 +60,10 @@ export class HomePage extends Component {
         this.props.handleNewFavouriteLocation(location);
     }
 
+    removeOneFavouriteLocation = (location) => {
+        this.props.handleRemoveFavouriteLocation(location);
+    }
+
     render() {
         const { status, location, locationWeather, error } = this.state;
         return (
@@ -71,7 +75,13 @@ export class HomePage extends Component {
                 <SearchBar newLocation={this.newSearch}/>
 
                 { status === 'loading' && <p className="text-lg mb-4 font-normal mt-8"><span className="rotate">⏳</span> Loading weather forecast for {location}</p>}
-                { status === 'loaded' && < ForecastCard locationWeather={locationWeather} addNewFavourite={this.addNewFavouriteLocation}/>}
+                { status === 'loaded' && 
+                    < ForecastCard 
+                        locationWeather={locationWeather} 
+                        addNewFavourite={this.addNewFavouriteLocation}
+                        removeFavourite={this.removeOneFavouriteLocation}
+                    />
+                }
                 { error === true && < Redirect to='/404'/>}
             </main>
             </>

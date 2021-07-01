@@ -31,8 +31,17 @@ export class App extends Component {
     })
   }
 
+  removeFromFavourites = (locationObj) => {
+    const favouritesLocationsCopy = [...this.state.favouritesLocations];
+
+    const filteredFavourites = favouritesLocationsCopy.filter(location => location !== locationObj);
+    this.setState({
+      favouritesLocations: filteredFavourites,
+    })
+  }
+
   render() {
-    console.log(this.state.favouritesLocations)
+    console.log('App state', this.state.favouritesLocations)
     const { favouritesLocations } = this.state;
     return (
       <>
@@ -40,7 +49,10 @@ export class App extends Component {
           <Route 
             exact path="/" 
             render={() => (
-              < HomePage handleNewFavouriteLocation={this.addToFavourites} />
+              < HomePage 
+                handleNewFavouriteLocation={this.addToFavourites} 
+                handleRemoveFavouriteLocation={this.removeFromFavourites}
+              />
             )}
           />
           <Route 

@@ -47,7 +47,8 @@ export class ForecastCard extends Component {
         this.setState({
             isFavourite: !this.state.isFavourite,
         })
-
+        const { locationWeather } = this.props;
+        this.props.removeFavourite(locationWeather)
     }
 
 
