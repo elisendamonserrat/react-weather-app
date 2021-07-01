@@ -41,7 +41,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log('App state', this.state.favouritesLocations)
     const { favouritesLocations } = this.state;
     return (
       <>
@@ -50,6 +49,7 @@ export class App extends Component {
             exact path="/" 
             render={() => (
               < HomePage 
+                favouritesList={favouritesLocations}
                 handleNewFavouriteLocation={this.addToFavourites} 
                 handleRemoveFavouriteLocation={this.removeFromFavourites}
               />
@@ -58,7 +58,11 @@ export class App extends Component {
           <Route 
             exact path="/favourites" 
             render={() => (
-              < FavouritesPage favouritesList={favouritesLocations}/>
+              < FavouritesPage 
+                  favouritesList={favouritesLocations}
+                  handleNewFavouriteLocation={this.addToFavourites} 
+                  handleRemoveFavouriteLocation={this.removeFromFavourites}
+              />
             )}
           />
           <Route path="/404"component={NotFoundPage} />

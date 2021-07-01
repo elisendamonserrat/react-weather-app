@@ -13,6 +13,7 @@ export class HomePage extends Component {
             locationWeather: {},
             status: 'loading',
             error: false,
+            isFavourite: false,
         }
     }
 
@@ -66,6 +67,7 @@ export class HomePage extends Component {
 
     render() {
         const { status, location, locationWeather, error } = this.state;
+        const { favouritesList } = this.props;
         return (
             <>
             <Navbar />
@@ -80,6 +82,7 @@ export class HomePage extends Component {
                         locationWeather={locationWeather} 
                         addNewFavourite={this.addNewFavouriteLocation}
                         removeFavourite={this.removeOneFavouriteLocation}
+                        favouritesList={favouritesList}
                     />
                 }
                 { error === true && < Redirect to='/404'/>}
