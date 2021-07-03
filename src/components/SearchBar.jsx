@@ -23,19 +23,19 @@ export class SearchBar extends Component {
     render() {
         const { location } = this.state;
         return (
-            <div className="flex items-center w-full">
+            <div className="flex items-center w-11/12 max-w-sm border rounded-xl">
                 <input
                     type="text"
                     value={location}
                     onChange={this.handleInput}
-                    className="py-2 px-2 w-11/12 border rounded-mg max-w-2xl"
+                    className="py-2 px-2 w-11/12 max-w-2xl"
                 />  
                 <button 
                     type="submit" 
-                    className="border px-4 py-2 bg-yellow-400 rounded-mg font-bold uppercase inline-block"
+                    className="px-4 py-2 m-0 text-black rounded-xl font-bold uppercase inline-block"
                     onClick={this.handleNewLocation}
                 >
-                    Check
+                    <img src="/img/search.png" alt="search button" className="w-6"/>
                 </button>
             </div>
         )
