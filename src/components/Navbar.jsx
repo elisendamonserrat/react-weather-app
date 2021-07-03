@@ -10,7 +10,7 @@ export default function Navbar() {
                     <p className="font-bold text-yellow-500 text-xl">Weather App</p>
                 </div>
             </Link>
-            <Link to='/favourites'><button className="border px-2 py-2 bg-gray-100 rounded-lg text-sm uppercase inline-block">Favourites</button></Link>
+            <Link to='/favourites'><button className="bg-transparent hover:bg-yellow-400 text-yellow-500 font-semibold hover:text-black py-2 px-2 border border-yellow-500 hover:border-transparent rounded-md">Favourites</button></Link>
         </nav>
     )
 }
