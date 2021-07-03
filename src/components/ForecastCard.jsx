@@ -27,23 +27,15 @@ export class ForecastCard extends Component {
         })
     }
 
-    checkIfFavourite = () => {
-        const { favouritesList, locationWeather } = this.props;
-        const index = favouritesList.findIndex(location => location.name === locationWeather.name);
-
-        if( index === -1 && !this.state.isFavourite) {
-            return <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button>
-        } else {
-            return <button className="self-end mx-8" onClick={this.removeFromFavourites}>❤️</button>
-        }
-    }
-
     render() {
-        const { locationWeather } = this.props;
-
+        const { locationWeather, favouritesList } = this.props;
+        const index = favouritesList.findIndex(location => location.name === locationWeather.name);
+        
         return (
             <div className="border my-8 flex flex-col items-center py-4 rounded-md w-11/12 max-w-sm">
-                {this.checkIfFavourite()}
+                {index === -1 && <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button> }
+                {index > -1 && <button className="self-end mx-8" onClick={this.removeFromFavourites}>❤️</button> }
+
                 <h1 className="text-3xl">{locationWeather.name}</h1>
                 <p className="text-base text-gray-400 font-semibold">{currentDate()}</p>
                 <p className="text-gray-500 font-semibold text-xl mt-6">{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</p>
