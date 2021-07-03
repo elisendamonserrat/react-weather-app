@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import  { Redirect } from 'react-router-dom'
+
+
 import ForecastCard from '../components/ForecastCard';
 import SearchBar from '../components/SearchBar';
 import Navbar from '../components/Navbar';
-import  { Redirect } from 'react-router-dom'
+
+import apiClient from '../services/apiClient';
 
 export class HomePage extends Component {
     constructor(props) {
@@ -13,48 +16,43 @@ export class HomePage extends Component {
             locationWeather: {},
             status: 'loading',
             error: false,
-            isFavourite: false,
+            redirect: false,
         }
     }
 
     componentDidMount = () => {
         const { location } = this.state;
-        const apiKey = process.env.REACT_APP_API_KEY;
-
-        axios
-            .get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`)
-            .then((response) => {
-                this.setState({
-                    locationWeather: response.data,
-                    status: 'loaded'
-                })
-            })
-            .catch(error => console.log(error))
+        this.getWeather(location)
     }
 
     newSearch = (newLocation) => {
-        const apiKey = process.env.REACT_APP_API_KEY;
+        this.getWeather(newLocation)
+    }
 
-        axios
-        .get(`https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&units=metric&appid=${apiKey}`)
-        .then((response) => {
+    async getWeather(location) {
+      this.setState({
+        status: 'loading'
+      })
+
+      try {
+        const locationWeather = await apiClient.getWeatherByLocation(location);
+        this.setState({
+          location: location,
+          locationWeather: locationWeather,
+          status: 'loaded'
+        })
+      } catch(error) {
+        const { status, data: { message } } = error.response;
+          if (status === 404) {
             this.setState({
-                locationWeather: response.data,
-                status: 'loaded'
+              status: 'error',
+              error: message
             })
-        })
-        .catch(error => {
-            if (error.response) {
-                this.setState({
-                    error: true,
-                })
-
-            } else if (error.request) {
-                console.log(error.request);
-            } else {           
-                console.log('Error', error.message);
-            }
-        })
+          } else {
+            const { history } = this.props;
+            history.push('/404')
+          }
+      }
     }
 
     addNewFavouriteLocation = (location) => {
@@ -74,7 +72,7 @@ export class HomePage extends Component {
             <main className="w-11/12 max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
                 
                 <p className="text-lg my-4 font-normal">Checkout the weather forecast of any city <br></br>and save your favourites ones!</p>
-                <SearchBar newLocation={this.newSearch}/>
+                <SearchBar newLocation={this.newSearch} initialValue={location}/>
 
                 { status === 'loading' && <p className="text-lg mb-4 font-normal mt-8"><span className="rotate">⏳</span> Loading weather forecast for {location}</p>}
                 { status === 'loaded' && 
@@ -85,7 +83,7 @@ export class HomePage extends Component {
                         favouritesList={favouritesList}
                     />
                 }
-                { error === true && < Redirect to='/404'/>}
+                {status === 'error' && <p className="text-lg mb-4 font-normal mt-8">Sorry, {error}. <br></br> Try another location 🌎</p>}
             </main>
             </>
         )

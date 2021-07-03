@@ -4,7 +4,7 @@ export class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            location: 'Barcelona'
+            location: this.props.initialValue,
         }
     }
 
