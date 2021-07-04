@@ -1,5 +1,27 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 import { currentDate, mathRoundTemperature} from '../helpers'
+
+const Subtitle = styled.p`
+    color: ${props => props.theme.subtitles};
+    font-size: 1rem;
+    line-height: 1.5rem;
+`
+
+const H1 = styled.h1`
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 0.2rem;
+    color: ${props => props.theme.h1};
+`
+
+const H2 = styled.h2`
+    color: ${props => props.theme.subtitles};
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+`
 
 export class ForecastCard extends Component {
     constructor(props) {
@@ -36,16 +58,16 @@ export class ForecastCard extends Component {
                 {index === -1 && <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button> }
                 {index > -1 && <button className="self-end mx-8" onClick={this.removeFromFavourites}>❤️</button> }
 
-                <h1 className="text-2xl">{locationWeather.name}</h1>
-                <p className="text-base text-gray-400 font-semibold">{currentDate()}</p>
-                <p className="text-gray-500 font-semibold text-lg mt-6">{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</p>
+                <H1>{locationWeather.name}</H1>
+                <Subtitle>{currentDate()}</Subtitle>
+                <H2>{locationWeather.weather[0].main}, {locationWeather.weather[0].description}</H2>
                 <div className="flex flex-col items-center">
                         <img src={`http://openweathermap.org/img/wn/${locationWeather.weather[0].icon}@4x.png`}  alt={`weather in ${locationWeather.name}`}/>
                 </div>
                 <div className="border p-4 rounded-md flex items-center justify-between w-11/12">
-                    <p className="text-md text-gray-400 font-semibold">Min {mathRoundTemperature(locationWeather.main.temp_min)}°</p>
+                    <Subtitle>Min {mathRoundTemperature(locationWeather.main.temp_min)}°</Subtitle>
                     <p className="font-bold text-3xl">{mathRoundTemperature(locationWeather.main.temp)}°</p>
-                    <p className="text-md text-gray-400 font-semibold">Max {mathRoundTemperature(locationWeather.main.temp_max)}°</p>
+                    <Subtitle>Max {mathRoundTemperature(locationWeather.main.temp_max)}°</Subtitle>
                 </div>
            </div>
         )

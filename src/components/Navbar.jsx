@@ -7,7 +7,7 @@ export default function Navbar() {
             <Link to='/'>
                 <div className="flex items-center">
                     <img className="w-10 h-10 mr-4 inline-block" src="/img/weather-app.png" alt="Weather app icon"/>
-                    <p className="font-bold text-yellow-500 text-xl">Weather App</p>
+                    <p className="font-bold text-yellow-500 text-2xl">Weather App</p>
                 </div>
             </Link>
             <Link to='/favourites'><button className="bg-transparent hover:bg-yellow-400 text-yellow-500 font-semibold hover:text-black py-2 px-2 border border-yellow-500 hover:border-transparent rounded-md">Favourites</button></Link>

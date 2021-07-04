@@ -28,7 +28,7 @@ export class SearchBar extends Component {
                     type="text"
                     value={location}
                     onChange={this.handleInput}
-                    className="py-2 px-2 w-11/12 max-w-2xl"
+                    className="py-2 px-2 w-11/12 max-w-2xl bg-transparent"
                 />  
                 <button 
                     type="submit" 

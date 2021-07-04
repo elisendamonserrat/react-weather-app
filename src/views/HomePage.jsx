@@ -65,7 +65,7 @@ export class HomePage extends Component {
 
     render() {
         const { status, location, locationWeather, error } = this.state;
-        const { favouritesList } = this.props;
+        const { favouritesList, theme } = this.props;
         return (
             <>
             <Navbar />

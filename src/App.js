@@ -67,6 +67,7 @@ export class App extends Component {
               favouritesList={favouritesLocations}
               handleNewFavouriteLocation={this.addToFavourites}
               handleRemoveFavouriteLocation={this.removeFromFavourites}
+              theme={theme}
             />
           )}
         />
@@ -78,6 +79,7 @@ export class App extends Component {
               favouritesList={favouritesLocations}
               handleNewFavouriteLocation={this.addToFavourites}
               handleRemoveFavouriteLocation={this.removeFromFavourites}
+              theme={theme}
             />
           )}
         />
