@@ -61,7 +61,7 @@ export class HomePage extends Component {
 
     render() {
         const { status, location, locationWeather, error } = this.state;
-        const { favouritesList, theme } = this.props;
+        const { favouritesList } = this.props;
         return (
             <>         
                 <p className="text-lg my-4 ">Checkout the weather forecast of any city <br></br>and save your favourites ones!</p>
