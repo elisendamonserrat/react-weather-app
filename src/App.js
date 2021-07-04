@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
 
 import HomePage from "./views/HomePage";
 import FavouritesPage from "./views/FavouritesPage";
@@ -10,6 +13,7 @@ export class App extends Component {
     super(props);
     this.state = {
       favouritesLocations: [],
+      theme: 'light'
     };
   }
 
@@ -42,9 +46,18 @@ export class App extends Component {
     });
   };
 
+  themeToggler = () => {
+    const { theme } = this.state;
+    theme === 'light' ? this.setState({ theme: 'dark'}) : this.setState({ theme: 'light'});
+  }
+
   render() {
-    const { favouritesLocations } = this.state;
+    const { favouritesLocations, theme } = this.state;
     return (
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+      <button onClick={this.themeToggler}>Switch Theme</button>
+      <GlobalStyles/>
       <Switch>
         <Route
           exact
@@ -71,6 +84,8 @@ export class App extends Component {
         <Route path="/404" component={NotFoundPage} />
         <Redirect to="/404" />
       </Switch>
+      </>
+      </ThemeProvider>
     );
   }
 }
