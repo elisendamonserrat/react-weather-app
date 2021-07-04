@@ -60,7 +60,7 @@ export class App extends Component {
     return (
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <GlobalStyles />
-        <div className="w-11/12 max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
+        <div className="w-full max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
           <Toggler theme={theme} toggleTheme={this.themeToggler} />
           <Navbar />
           <Switch>

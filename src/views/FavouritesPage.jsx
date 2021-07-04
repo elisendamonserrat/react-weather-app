@@ -19,15 +19,16 @@ export class FavouritesPage extends Component {
         return (
             <>
                     {!favouritesList.length && 
-                     <div className="w-11/12 max-w-screen-sm mx-auto text-center my-16 flex flex-col items-center">
-                        <h1 className="font-bold text-5xl mb-8">Psst!</h1>
-                        <p className="text-xl mb-8">Seems like you don't have any favourites yet.</p>
-                        <img  className="w-2/5" src="/img/idea.png" alt="page not found" />
+                     <div className="w-11/12 max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
+                        <h1 className="font-bold text-3xl mb-4">Psst!</h1>
+                        <p className="text-lg mb-8">Seems like you don't have any favourites yet.</p>
+                        <img  className="w-2/6" src="/img/idea.png" alt="page not found" />
                         <Link to="/">
                             <button
-                                className="px-4 py-2 mt-8 border rounded-lg bg-yellow-300 rounded-lg font-bold uppercase"
+                                style={{color: 'rgba' + '(54, 54, 54, 1)'}}
+                                className="px-4 py-2 mt-8 border-none rounded-lg bg-yellow-400 rounded-lg font-bold uppercase"
                             >
-                              Go to Home Page
+                              Go Back
                             </button>
                         </Link>
                      </div>

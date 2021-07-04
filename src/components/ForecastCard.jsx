@@ -54,7 +54,7 @@ export class ForecastCard extends Component {
         const index = favouritesList.findIndex(location => location.name === locationWeather.name);
 
         return (
-            <div className="border my-8 flex flex-col items-center py-4 rounded-md w-10/12 max-w-xs">
+            <div className="border my-8 flex flex-col items-center pt-2 pb-4 rounded-md w-10/12 max-w-xs">
                 {index === -1 && <button className="self-end mx-8" onClick={this.handleNewFavourite}>🤍</button> }
                 {index > -1 && <button className="self-end mx-8" onClick={this.removeFromFavourites}>❤️</button> }
 
