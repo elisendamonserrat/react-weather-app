@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Navbar from '../components/Navbar';
 import ForecastCard from '../components/ForecastCard';
 
 
@@ -19,13 +18,10 @@ export class FavouritesPage extends Component {
         console.log(favouritesList)
         return (
             <>
-                <Navbar />
-                <main className="w-11/12 max-w-screen-sm mx-auto text-center flex flex-col items-center">
                     {!favouritesList.length && 
                      <div className="w-11/12 max-w-screen-sm mx-auto text-center my-16 flex flex-col items-center">
-                        <p className="font-semibold text-xl mb-8">Seems like you don't have any favourites yet. 
-                        <br></br> 
-                        Select your preferred cities and check them here!</p>
+                        <h1 className="font-bold text-5xl mb-8">Psst!</h1>
+                        <p className="text-xl mb-8">Seems like you don't have any favourites yet.</p>
                         <img  className="w-2/5" src="/img/idea.png" alt="page not found" />
                         <Link to="/">
                             <button
@@ -47,7 +43,6 @@ export class FavouritesPage extends Component {
                             />
                          )
                     })}
-                </main>
             </>
         )
     }

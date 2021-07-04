@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import  { Redirect } from 'react-router-dom'
-
-
 import ForecastCard from '../components/ForecastCard';
 import SearchBar from '../components/SearchBar';
-import Navbar from '../components/Navbar';
 
 import apiClient from '../services/apiClient';
 
@@ -67,10 +63,7 @@ export class HomePage extends Component {
         const { status, location, locationWeather, error } = this.state;
         const { favouritesList, theme } = this.props;
         return (
-            <>
-            <Navbar />
-            <main className="w-11/12 max-w-screen-sm mx-auto text-center my-4 flex flex-col items-center">
-                
+            <>         
                 <p className="text-lg my-4 ">Checkout the weather forecast of any city <br></br>and save your favourites ones!</p>
                 <SearchBar newLocation={this.newSearch} initialValue={location}/>
 
@@ -84,7 +77,6 @@ export class HomePage extends Component {
                     />
                 }
                 {status === 'error' && <p className="text-lg mb-4 font-normal mt-8">Sorry, {error}. <br></br> Try another location 🌎</p>}
-            </main>
             </>
         )
     }
