@@ -4,8 +4,7 @@ import { MdWbSunny } from "react-icons/md";
 import { HiMoon } from "react-icons/hi";
 
 const ToggleButton = styled.button`
-
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   background: ${({ theme }) => theme.backgroundIcon};
@@ -30,6 +29,7 @@ display: flex;
       }
    }
 `;
+
 export default function Toggler({theme, toggleTheme}) {
     const icon = theme === "light" ? <MdWbSunny size={20} style={{ color: "yellow" }} /> : <HiMoon size={20} />;
     const isLight = theme === 'light';
